@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/courses/style.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
+    <title>E-Learning</title>
+</head>
+<body>
+
+    {{!-- navbar starts --}}
+     {{>navbar}}
+    {{!-- navbar ends  --}}
+
+    {{!-- hero section starts --}}
+     {{>hero_sec}}
+    {{!-- hero section ends --}}
+
+    {{!-- course slides starts --}}
+     {{>course_slides}}
+    {{!-- course slides ends --}}
+
+    {{!-- about us starts --}}
+     {{>about}}
+    {{!-- about us ends --}}
+
+    {{!-- service starts --}}
+     {{>service}}
+    {{!-- service ends --}}
+
+    {{!-- reviews starts --}}
+     {{>reviews}}
+    {{!-- reviews ends  --}}
+
+    {{!-- service starts --}}
+     {{>maps}}
+    {{!-- service ends --}}
+
+    {{!-- service starts --}}
+     {{!-- {{>contact}} --}}
+    {{!-- service ends --}}
+
+
+
+    <div class="container-fluid mt-5 ">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="row">
+                    <div class="col-md-6 col-12 inst-text order-md-0 order-0">
+                        <figure>
+                            <img src="../public/images/instructor.jpg"  alt="instructor_image">
+                        </figure>
+                    </div>    
+                    {{!-- {{right side}} --}}
+                    <div class="col-md-6 col-12 inst-text order-md-1 order-1 d-flex justify-content-center align-items-start flex-column">
+                        <h1>Become An Instructor</h1>
+                        <h1>GROW YOUR BUSINESS</h1>
+                        <P>Instructors from around the world teach millions of students.<span class="bold-style"> We provide the tools and skills to teach what you love.✌</span></P>
+                        <a type="button" class="btn-style btn-primary" href="/instructor">start teaching today</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {{!-- contact page starts  --}}
+     {{>footer}}
+    {{!-- contact page end   --}}
+
+
+  
+    
+
+    {{!-- Add more swiper divs as needed --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function (){
+            const swiperDivs = document.querySelectorAll(".swiper-slide");
+            swiperDivs.forEach((div) => {
+                div.addEventListener("click", function () {
+                    const course_id = div.querySelector("h1").textContent;
+                   // const course_name = div.querySelector("h2").textContent;
+                   // const course_image = div.querySelector("img").getAttribute("src");
+                   // console.log(course_id,course_name)
+                    window.location.href = `/course?course_id=${encodeURIComponent(course_id)}`;  //&course_name=${encodeURIComponent(course_name)}&course_img=${encodeURIComponent(course_image)}
+                });
+            });
+        });
+    </script>
+    
+
+    {{!-- tab module script  --}}
+    <script>
+        const tabs = document.querySelectorAll('.tab_btn')
+        const all_content = document.querySelectorAll('.content')
+
+        tabs.forEach((tab,index)=>{
+            tab.addEventListener('click',(e)=>{
+                tabs.forEach(tab=>{tab.classList.remove('active')});
+                tab.classList.add('active');
+
+                //var line = document.querySelector('.line');
+                //line.style.width = e.target.offsetWidth + "px";
+                //line.style.left = e.target.offsetLeft + "px";
+
+
+                all_content.forEach(content=>{content.classList.remove('active')});
+                all_content[index].classList.add('active');
+            })
+        })
+    </script>
+
+
+    {{!-- review tetimonial script --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+	<script>
+        $(".testmonial_slider_area").owlCarousel({
+				autoplay: true,
+				slideSpeed:1000,
+				items : 3,
+				loop: true,
+				nav:true,
+				navText:['<i class="fa fa-arrow-left"></i>','<i class="fa fa-arrow-right"></i>'],
+				margin: 30,
+				dots: true,
+				responsive:{
+					320:{
+						items:1
+					},
+					767:{
+						items:2
+					},
+					600:{
+						items:2
+					},
+					1000:{
+						items:3
+					}
+				}
+				
+			});
+    </script>
+
+
+    {{!-- course slider script --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var TrandingSlider = new Swiper('.tranding-slider', {
+           effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        loop: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        } 
+        });
+    });
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+     
+     {{!-- nodejs scripts --}}
+    <script type="text/javascript" src="../jq/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+</body>
+</html>
+
+
+
+
+
+

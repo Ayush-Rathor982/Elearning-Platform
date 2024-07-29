@@ -1,0 +1,321 @@
+.course-desc{
+    background-color: black;
+    color: rgb(240, 247, 247);
+}
+
+.course-desc .main-bar{
+    padding: 3.2rem;
+}
+
+.course-desc .main-bar{
+    padding: 3.2rem;
+}
+
+.course-desc .sidebar{
+    background-color: aliceblue;
+    box-shadow: 2px 1px 15px #888, -2px -1px 15px #888;
+    position: absolute;
+    right: 6rem;
+    top: 2rem;
+    max-width: 20rem;
+    color: black;
+}
+
+.course-desc figure{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.course-desc img{
+    padding: 1rem 1.5rem;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* border: 3px solid #697079; */
+}
+
+.course-desc .sidebar-content{
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.course-desc .sidebar-content .div-span{
+    text-align: left;
+    padding: 0.3rem 0.4rem;
+    font-size: 1rem; 
+}
+
+.course-desc .sidebar-content h1{
+    /* font-size: 1.5rem; */
+    padding-left: 1.1rem;
+    text-align: left;
+    font-family: serif;
+    font-weight: bold;
+}
+
+.course-desc .sidebar-content h4{
+    /* font-size: 1.5rem; */
+    /* padding-left: 1rem; */
+    margin-top: 2rem;
+    font-family: serif;
+    font-weight: bold;
+}
+
+.course-desc .sidebar-content .btn{
+    margin: 1rem 0px;
+    background: none;
+    background-color: rgb(227, 239, 250);
+    padding: 0px 0px;
+    font-size: 1.5rem;
+    font-family: serif;
+    font-weight: bold;
+    color: black;
+    min-width: 90%;
+    border-radius: 0px;
+    border: 2px solid black;
+}
+
+.course-desc .sidebar-2{
+    display: none;
+    background-color: aliceblue;
+    box-shadow: 2px 1px 15px #888, -2px -1px 15px #888;
+    position: fixed;
+    right: 6rem;
+    top: 2rem;
+    max-width: 20rem;
+    min-height: 35rem;
+    padding: 0.8rem;
+    color: black;
+}
+
+@media (max-width:764px) {
+    .course-desc {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .course-desc .sidebar{
+        position: relative;
+        right: auto;
+        top: 1rem;
+    }
+}
+
+
+
+
+
+.container-box {
+    padding: 3rem 5rem;
+    overflow: hidden;
+}
+
+.container-box .box-content{
+    border: 1px solid #ccc;
+}
+
+.container-box .box-content .content-btn{
+    /* box-shadow: 2px 1px 15px #888, -2px -1px 15px #888; */
+    box-shadow: 0px -1px 7px rgba(148, 146, 146, 0.2)
+}
+
+.container-box .content {
+    height: 11rem; 
+    padding: 0.2rem;
+    overflow: hidden;
+}
+
+.container-box .box-content h2{
+    font-family: initial;
+    padding: 2rem;
+}
+
+.container-box .content .coloum{
+    padding: 0.3rem 2.4rem;
+}
+
+.container-box button {
+    background: none;
+    /* background-color: #3498db; */
+    color: #a387f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.container-box button:hover {
+    text-decoration: underline;
+}
+
+
+
+.lesson-list{
+    padding: 3rem 5rem;
+}
+.lesson-list h2{
+    padding: 2.3rem 0rem;
+    font-weight: bold;
+}
+.lesson-list .list-group-item{
+    border-radius: 0px;
+    border: 0.1px solid rgb(175, 171, 171);
+}
+
+.lesson-list .list-group-item .list-head{
+    font-size: large;
+    cursor: pointer;
+}
+
+.lesson-list .list-group-item .list-items{
+    margin-top: 1rem;
+    display: none;
+}
+
+.lesson-list .list-group-item .list-items div{
+    color: black;
+    padding: 0.4rem 0px;
+}
+
+.lesson-list .list-group-item .list-items a{
+    color: black;
+    /* padding: 0.4px 0px; */
+    text-decoration: none;
+}
+
+.lesson-list .list-group-item .list-items a:hover{
+    color: rgb(179, 175, 238);
+    /* padding: 0.4px 0px; */
+    text-decoration: underline;
+}
+
+.lesson-list .list-group-item .list-items.active{
+    display: block;
+}
+
+
+.requirments{
+    padding: 2rem 4rem;
+}
+
+.requirments h2{
+    font-weight: bold;
+}
+
+.requirments li{
+    font-size: 1.1rem;
+}
+
+.description{
+    padding: 2rem 4rem;
+}
+
+.description h2{
+    font-weight: bold;
+}
+
+.description p{
+    font-size: 1rem;
+}
+
+.queries{
+    padding: 2rem 4rem;
+    margin-bottom: 2rem;
+}
+.queries h2{
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+.queries .showing-queries{
+    padding: 0.8rem 1rem;
+    border-top: 1px solid rgb(43, 38, 38);
+    border-bottom: 1px solid rgb(43, 38, 38);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(250, 251, 252);
+}
+.queries .showing-queries h5{
+    padding: 0.3rem 0rem;
+    font-weight: bold;
+    font-family: initial;
+}
+.queries .showing-queries div{
+    padding: 0rem 0.7rem;
+}
+.queries button{
+    font-size: 1.3rem;
+}
+.queries #query {
+    width: 100%;
+    border-radius: 1.5rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+        /* text-align: center; */
+        vertical-align: middle;
+}
+
+
+.feedbacks{
+    padding: 1.4rem 4rem;
+    margin-bottom: 5rem;
+}
+.feedbacks h2{
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+.feedbacks button{
+    font-size: 1.3rem;
+}
+.feedbacks #feedback {
+    width: 100%;
+    /* border-radius: 1.5rem; */
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+        /* text-align: center; */
+        vertical-align: middle;
+}
+
+
+#instructorModal #instructorModalLabel{
+    font-size: 3rem;
+    font-family: initial;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.modal-body img{
+    max-width: 11rem;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid beige;
+}
+.modal-body .ps{
+    font-size: 1.15rem;
+}
+.modal-body .pro-sec1{
+    padding-left: 0.5rem;
+}
+.modal-body .pro-sec1 h2{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.modal-body .pro-sec1 .p{
+    padding: 0.2rem 0.6rem;
+}
+.inst_modal_button{
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: rgb(151, 193, 230);
+}
+.inst_modal_button:hover{
+    background: none;
+    text-decoration: underline;
+    color: rgb(151, 193, 230);
+}

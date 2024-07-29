@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/inst_css/dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="row ">
+            <div class="sidebar col-md-3 col-12 pb-5">
+            {{#if courses.length }}
+            {{#each courses }}
+                 <div class="side-box col-md-12 col-12 mt-5">
+                    <h1 style="display: none;">{{this._id}}</h1>
+                    <figure class="side-box1 ">
+                    {{!-- <figure> --}}
+                        <img src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+                        <div class="overlay"></div>
+                    {{!-- </figure> --}}
+                    </figure>
+                 </div>
+            {{/each }}  
+            {{/if }}      
+                 {{!-- <div class="side-box col-md-12 col-12 mt-3"><div class="side-box1 "></div></div>
+                 <div class="side-box col-md-12 col-12 mt-3"><div class="side-box1 "></div></div>
+                 <div class="side-box col-md-12 col-12 mt-3"><div class="side-box1 "></div></div>
+                 <div class="side-box col-md-12 col-12 mt-3"><div class="side-box1 "></div></div> --}}
+            </div>
+            <div class="main-bar col-md-9 col-12">
+                <div class="row">
+                    <div class="box box-cont1 col-md-6 col-12 mt-3"><div class="box1 ">Create New Course</div></div>
+                    <div class="box box-cont2 col-md-6 col-12 mt-3"><div class="box2 ">Upload Content</div></div>
+                    <div class="box box-cont3 col-md-6 col-12 mt-3"><div class="box3 ">Your Workspace</div></div>
+                    <div class="box box-cont4 col-md-6 col-12 mt-3"><div class="box4 ">Student's Queries</div></div>                     
+                </div>
+            
+                <div class="profile ">
+                    <div class="text-center">
+                        <img src="../public/images/stu4.jpg" alt="">
+                        {{!-- <h2 class="name mt-1">~John Gerry</h2> --}}
+                        <h2 class="name mt-1">~{{instructor.instructor_name}}</h2>
+                        <p><i class="fas fa-quote-left"></i>
+                        Education is the passport to the future,<br> for tomorrow belongs to those who prepare for it today.
+                        <i class="fas fa-quote-right"></i></p>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="profile-section col-md-6 col-12 ">
+                            <div class="pro-sec1">
+                                <h2>profile</h2>
+                                <div class="p"><i class="fas fa-clipboard"></i>&nbsp;&nbsp;&nbsp;4 Courses offered</div>
+                                <div class="p"><i class="fas fa-clipboard"></i>&nbsp;&nbsp;&nbsp;40 Students enrolled</div>
+                                <div class="text-center btn1">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Profile</button>
+                                    {{!-- <button> Edit profile</button> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-section col-md-6 col-12">
+                            <div class="pro-sec1">
+                                <h2>Qualifications</h2>
+                                <div class="p"><i class="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;Masters in Computer Science</div>
+                                <div class="p"><i class="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;PhD in Computer Science and Engineering</div>
+                                <h2 class="mt-3">Achievements</h2>
+                                <div class="p"><i class="fas fa-trophy"></i>&nbsp;&nbsp;&nbsp;Microsoft Certified Solution Developer</div>
+                                <div class="p"><i class="fas fa-trophy"></i>&nbsp;&nbsp;&nbsp;Oakridge University, Assited Faculty</div>
+                                <div class="p"><i class="fas fa-trophy"></i>&nbsp;&nbsp;&nbsp;Guest Lecture at Stanford University</div>
+                                <div class="p"><i class="fas fa-trophy"></i>&nbsp;&nbsp;&nbsp;40 Students enrolled</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <!-- Button trigger modal -->
+    {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+    </button> --}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <form id="edit-form" action="/instructor_update"  method="post" enctype="multipart/form-data"> 
+                    <div class="mb-3">
+                        <label for="inst-name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control textinput" value="{{instructor.instructor_name}}" id="inst-name" name="inst-name" aria-describedby="emailHelp" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inst-email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control textinput" value="{{instructor.instructor_email}}" id="inst-email" name="inst-email" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inst-phone" class="form-label">Mobile No.</label>
+                        <input type="number" class="form-control textInput" id="inst-phone" name="inst-phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inst-add" class="form-label">City</label>
+                        <input type="text" class="form-control textInput" id="inst-add" name="inst_add">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inst-image" class="form-label">Profile Image</label>
+                        <input type="file" class="form-control" id="inst-image" name="inst-image" accept="image/*">
+                        <figure class="text-center">
+                        <img id="preview-image" src="" >
+                        </figure>
+                    </div>
+                    <span class="mt-2">Wants to change password</span>
+                    <div class="mb-3">
+                        <label for="inst-pass1" class="form-label">New Password</label>
+                        <input type="text" class="form-control textInput" id="inst-pass1" name="inst-pass1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inst-pass2" class="form-label">Confirm Password</label>
+                        <input type="text" class="form-control textInput" id="inst-pass2" name="inst-pass2">
+                    </div>
+                    <div class="text-center">
+                       <button type="submit" class="btn ">Submit</button>
+                    </div>
+                </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    
+
+    {{!-- scripts for showing details of perticular course --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function (){
+            const swiperDivs = document.querySelectorAll(".side-box");
+            swiperDivs.forEach((div) => {
+                div.addEventListener("click", function () {
+                    const course_id = div.querySelector("h1").textContent;
+                    const instructor_id = "{{instructor_id}}";
+                    window.location.href = `/course_detaile?course_id=${encodeURIComponent(course_id)}&instructor_id=${encodeURIComponent(instructor_id)}`;  //&course_name=${encodeURIComponent(course_name)}&course_img=${encodeURIComponent(course_image)}
+                });
+            });
+        });
+    </script>
+
+     {{!-- script for creating course  --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parentElement = document.querySelector(".box-cont1"); 
+            parentElement.addEventListener("click", function (event) {
+                console.log("Clicked on a .box element");
+                if (event.target.classList.contains("box1")) {
+                    console.log("Clicked on a .box1 element");
+                    // window.location.href = `/create_course?`;       //  ?instructor_id=${encodeURIComponent({{instructor._id}}.toString())}
+
+                   const instructor_id = "{{instructor_id}}"; // Get the instructor_id passed from the server
+                   console.log(instructor_id)
+                   window.location.href = `/create_course?instructor_id=${encodeURIComponent(instructor_id)}`;
+                }
+            });
+        });
+    </script>
+
+     {{!-- script for upload content  --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parentElement = document.querySelector(".box-cont2"); 
+            parentElement.addEventListener("click", function (event) {
+                console.log("Clicked on a .box element");
+                if (event.target.classList.contains("box2")) {
+                    console.log("Clicked on a .box1 element");
+                    const instructor_id = "{{instructor_id}}";
+                    window.location.href = `/upload_content?instructor_id=${encodeURIComponent(instructor_id)}`;
+                }
+            });
+        });
+    </script>
+
+     {{!-- script for showing students queries  --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parentElement = document.querySelector(".box-cont4"); 
+            parentElement.addEventListener("click", function (event) {
+                console.log("Clicked on a .box element");
+                if (event.target.classList.contains("box4")) {
+                    console.log("Clicked on a .box1 element");
+                    const instructor_id = "{{instructor_id}}";
+                    window.location.href = `/stu_queries?instructor_id=${encodeURIComponent(instructor_id)}`;
+                }
+            });
+        });
+    </script>
+
+     {{!-- script for showing workspace  --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parentElement = document.querySelector(".box-cont3"); 
+            parentElement.addEventListener("click", function (event) {
+                console.log("Clicked on a .box element");
+                if (event.target.classList.contains("box3")) {
+                    console.log("Clicked on a .box1 element");
+                    const instructor_id = "{{instructor_id}}";
+                    window.location.href = `/workspace?instructor_id=${encodeURIComponent(instructor_id)}`;
+                }
+            });
+        });
+    </script>
+
+
+    {{!-- JavaScript to apply styles when typing in the input field --}}
+    <script>
+        const textInputs = document.getElementsByClassName('textInput');
+        {{!-- const textAreaInput = document.getElementsByClassName('textAreaInput'); --}}
+
+        Array.from(textInputs).forEach((input) => {
+            input.addEventListener('input', function() {
+            this.style.fontSize = '18px'; // Change font size
+            this.style.color = 'rgb(231, 236, 236)';   // Change text color
+            });
+        })
+        
+        {{!-- textInput[0].addEventListener('input', function() {
+        this.style.fontSize = '18px'; // Change font size
+        this.style.color = 'rgb(231, 236, 236)';   // Change text color
+        });
+
+        textInput[1].addEventListener('input', function() {
+        this.style.fontSize = '18px'; // Change font size
+        this.style.color = 'rgb(231, 236, 236)';   // Change text color
+        });
+
+        textAreaInput[0].addEventListener('input', function() {
+        this.style.fontSize = '18px';
+        this.style.color = 'rgb(231, 236, 236)';
+        }); --}}
+    </script>
+
+    
+    {{!-- JavaScript to handle image selection and preview --}}
+    <script>
+        document.getElementById('inst-image').addEventListener('change', function () {
+            const previewImage = document.getElementById('preview-image');
+            const input_img = document.getElementById('inst-image'); 
+            const fileInput = this;
+            // console.log(previewImage);
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block'; // Show the preview image
+                    input_img.style.display = 'none';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                previewImage.src = '';
+                previewImage.style.display = 'none'; // Hide the preview image
+            }
+        });
+    </script>
+
+
+    {{!-- nodejs scripts --}}
+    <script type="text/javascript" src="../jq/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+
+</body>
+</html>

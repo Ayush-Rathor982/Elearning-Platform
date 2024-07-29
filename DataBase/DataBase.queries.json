@@ -1,0 +1,47 @@
+[{
+  "_id": {
+    "$oid": "65566186876ca3e109b96280"
+  },
+  "course_name": "C++",
+  "course_id": "64ee55467d9ace8d3f9de304",
+  "student_name": "Akash",
+  "student_id": "6501319860c709a9fb7ac3bb",
+  "query_asked": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque culpa, quam quaerat eius sunt officia voluptatum fuga sed ut eum eaque unde dicta animi aut delectus provident repellendus dignissimos a.",
+  "__v": 0,
+  "query_reply": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum similique, perferendis pariatur fugiat obcaecati iure vero a placeat assumenda praesentium rem incidunt odit consequatur! Aspernatur, at doloribus. Quidem, autem enim."
+},
+{
+  "_id": {
+    "$oid": "6556630dbffda0159db9758e"
+  },
+  "course_name": "C++",
+  "course_id": "64ee55467d9ace8d3f9de304",
+  "student_name": "Akash",
+  "student_id": "6501319860c709a9fb7ac3bb",
+  "query_asked": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt aut quaerat quas error, doloribus esse fuga sit praesentium illo! Possimus, ut mollitia. Ipsam beatae doloribus incidunt dolorum, autem nobis ab?",
+  "__v": 0,
+  "query_reply": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, nostrum? Fugit voluptate sint libero odit dolorem quaerat amet, voluptatem ipsam magnam excepturi! Quam nostrum id nesciunt eius numquam qui fuga."
+},
+{
+  "_id": {
+    "$oid": "655b2b347349824ea793a3f4"
+  },
+  "course_name": "C++",
+  "course_id": "64ee55467d9ace8d3f9de304",
+  "student_name": "Akash",
+  "student_id": "6501319860c709a9fb7ac3bb",
+  "query_asked": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellendus quia voluptates, in minima aliquid natus facilis impedit, ratione voluptatum praesentium eius iste aspernatur a quidem placeat numquam officiis. Corporis.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656808c2ccfa21f451c5426a"
+  },
+  "course_name": "C++",
+  "course_id": "64ee55467d9ace8d3f9de304",
+  "student_name": "parth",
+  "student_id": "6531fbfa49b96c5d2c9639ad",
+  "query_asked": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio eligendi culpa quis quo ullam fugit placeat voluptatem in, doloribus neque! Assumenda quos error quaerat eligendi iste similique distinctio vero sed?",
+  "__v": 0,
+  "query_reply": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptate deleniti vitae, consectetur sint numquam perferendis explicabo tempore suscipit repellat sequi veniam molestiae repudiandae magnam ipsum! Non explicabo officiis dolore?"
+}]

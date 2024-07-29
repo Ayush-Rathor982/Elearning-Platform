@@ -1,0 +1,51 @@
+/* footer css starts */
+
+/* footer {
+  background: rgb(221, 217, 217);
+}
+
+footer p {
+  padding: 1rem 0;
+  margin: 0;
+  text-align: center;
+} */
+
+footer{
+    /* margin-top: 12rem; */
+    color: #fff;
+    background-color: #330e0e;
+  }
+  
+  footer h3{
+    font-family: initial;
+    padding: 2rem 1.5rem 0.5rem ;
+  }
+  
+  footer .f-line{
+    height: 0.7px;
+    background-color: #ffffff;
+  }
+  
+  footer .f-a{
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-family: initial;
+    color: #fff;
+  }
+  
+  footer .f-a a:hover{
+    color: #d8d3d3;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  footer .f-box{
+    margin: 5rem 5rem 0rem;
+    padding-bottom: 10rem;
+  }
+  
+  footer .f-sub-box{
+    padding: 0.7rem;
+  }
+  
+  /* footer css ends  */

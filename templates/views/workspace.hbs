@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Data Table CSS -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <!-- JQuery CDN -->
+    <script
+     src="https://code.jquery.com/jquery-3.6.3.js"
+     integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+     crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body{
+            min-height: 100%;
+            background-image: linear-gradient(-70deg, #56565a 30%, #101018 65%);
+            color: aliceblue;
+        }
+        .sidebar{ 
+            min-height: 50rem;
+            padding-bottom: 5rem;
+            background-image: linear-gradient(-45deg, #2c2c2e 10%, #1f1f25 50%);
+            color: aliceblue; 
+        }
+        .sidebar .sidebar-content{ 
+            font-size: 1.2rem;
+            padding: 3rem 2rem;
+            font-family: initial;
+        }
+        .sidebar .sidebar-content .sidebar-item{ 
+            padding: 0.5rem 0px;
+        }
+        .sidebar .sidebar-content .sidebar-item:hover{ 
+            color: rgb(96, 62, 151);
+        }
+
+
+        .main-bar .l-item1{
+            padding: 0px 1rem;
+            overflow-y: scroll;
+            position: fixed;
+            display: block;
+            max-height: 100%; 
+        }
+        .main-bar .l-item1::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+
+        .l-item1 .course-detail{
+            z-index: 0;
+            opacity: 0.85;
+            border-radius: 2rem;
+            background-image: linear-gradient(-45deg, #1e1c27 20%, #08085e 50%);
+        }
+
+        .l-item1 .course-detail .m1{
+            padding: 1rem 0rem;
+            max-width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .l-item1 .course-detail img{
+            z-index: 3;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #697079;
+            border-radius: 0.7rem;
+        }
+
+        .l-item1 .course-detail .course-desc{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .l-item1 .course-detail .course-desc h3{
+            padding: 0.1rem 0px;
+        }
+
+        .mainbar-item .students-section .courses-name{
+            min-height: 80rem;
+            padding: 5.5rem 1.8rem;
+            font-size: 0.9rem;
+            background-image: linear-gradient(-45deg, #2e2a3b 20%, #2e2e50 50%);
+        }
+        .students-section .courses-name .list-head{
+            font-size: 1.2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.6rem 0px;
+        }
+        .students-section .courses-name .list-head:hover{
+            color: rgb(111, 111, 119);
+            text-decoration: underline;
+        }
+        
+         
+        .main-bar .mainbar-item .students-section .students-name .student-section{
+            overflow-y: scroll;
+            position: fixed;
+            display: block;
+            max-height: 100%; 
+        }
+        .main-bar .mainbar-item .students-section .students-name .student-section::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+        
+
+        .students-section .student-section{
+            padding: 0.7rem;
+        }
+        
+        .student-section .student{
+           border: 2px solid rgb(165, 167, 168);
+           box-shadow: 2px 2px 5px rgba(238, 232, 232, 0.2),-2px -2px 5px rgba(238, 232, 232, 0.2);
+           background-image: linear-gradient(-40deg, #535858 30%, #153b3b 80%);
+        }
+        .student-section .student .heading{
+            padding: 0.08rem 0.05rem;
+            {{!-- border-radius: 0.8rem;
+            border: 2px solid rgb(54, 10, 59); --}}
+        }
+
+        .student-section .student .student-email{
+            border-top: 0.4px solid floralwhite;
+            border-bottom: 0.4px solid floralwhite;
+            padding: 0.5rem 1.5rem ;
+            font-size: 1.3rem;
+            color: #c3c3cc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           background-image: linear-gradient(-40deg, #252531 30%, #3b3b50 80%); 
+        }
+
+        .student-section .student figure{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .student-section .student .heading h3{
+            font-style: italic;
+            font-family: initial ;
+        }
+
+        .student-section .student img{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #697079;
+        }
+
+        .main-bar .mainbar-item .sell-report{
+            overflow-x: scroll;
+            min-height: 40rem;
+            padding: 1.3rem 0px;
+        }
+
+        .main-bar .mainbar-item .sell-report::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+          
+        /* Change the color of the search input field text */
+        #myTable_wrapper .dataTables_filter input {
+            color: rgb(247, 245, 245);
+        }
+        #myTable_wrapper .dataTables_length select {
+            color: rgb(247, 245, 245);
+        }
+        #myTable_wrapper .dataTables_length select option {
+            color: red;
+        }
+        #myTable_wrapper .dataTables_paginate .paginate_button {
+            color: rgb(191, 191, 223) !important;
+            background-color: rgb(61, 65, 66);
+            margin-top: 0.8rem;
+        }
+        #myTable_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #76767a;
+            color: rgb(5, 5, 34) !important;
+        }
+
+
+        .mainbar-item .feedbacks-section .courses-name2{
+            min-height: 80rem;
+            padding: 5.5rem 1.8rem;
+            font-size: 0.9rem;
+            background-image: linear-gradient(-45deg, #2e2a3b 20%, #2e2e50 50%);
+        }
+        .feedbacks-section .courses-name2 .list-head2{
+            font-size: 1.2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.6rem 0px;
+        }
+        .feedbacks-section .courses-name2 .list-head2:hover{
+            color: rgb(111, 111, 119);
+            text-decoration: underline;
+        }
+        .main-bar .mainbar-item .feedbacks-section .feedbacks-name .feedback-section{
+            overflow-y: scroll;
+            position: fixed;
+            display: block;
+            max-height: 100%; 
+        }
+        .main-bar .mainbar-item .feedbacks-section .feedbacks-name .feedback-section::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+        
+
+        .feedbacks-section .feedback-section{
+            padding: 0.7rem;
+        }
+        
+        .feedback-section .feedback{
+           border: 2px solid rgb(165, 167, 168);
+           box-shadow: 2px 2px 5px rgba(238, 232, 232, 0.2),-2px -2px 5px rgba(238, 232, 232, 0.2);
+           background-image: linear-gradient(-40deg, #535858 30%, #153b3b 80%);
+        }
+        .feedback-section .feedback .heading{
+            padding: 0.08rem 0.05rem;
+            {{!-- border-radius: 0.8rem;
+            border: 2px solid rgb(54, 10, 59); --}}
+        }
+
+        .feedback-section .feedback .feedback-content{
+            border-top: 0.4px solid floralwhite;
+            border-bottom: 0.4px solid floralwhite;
+            padding: 0.5rem 1.5rem ;
+            font-size: 0.9rem;
+            color: #c3c3cc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           background-image: linear-gradient(-40deg, #252531 30%, #3b3b50 80%); 
+        }
+
+        .feedback-section .feedback figure{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .feedback-section .feedback .heading h3{
+            font-style: italic;
+            font-family: initial ;
+        }
+
+        .feedback-section .feedback img{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #697079;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="sidebar col-md-3 col-12 pb-5">
+            <div class="sidebar-content">
+                <div class="sidebar-item"><i class="fa-brands fa-studiovinari"></i>&nbsp;&nbsp;Courses You Offered</div>
+                <div class="sidebar-item"><i class="fa-brands fa-studiovinari"></i>&nbsp;&nbsp;Students Enrollled In Courses</div>
+                <div class="sidebar-item"><i class="fa-brands fa-studiovinari"></i>&nbsp;&nbsp;Sell Report About Courses</div>
+                <div class="sidebar-item"><i class="fa-brands fa-studiovinari"></i>&nbsp;&nbsp;Feedback About Courses</div>
+                <div class="sidebar-item"><i class="fa-brands fa-studiovinari"></i>&nbsp;&nbsp;Logout</div>
+            </div>
+        </div>
+        <div class="main-bar col-md-9 col-12">
+            <div class="mainbar-item l-item1" style="display: none;">
+             {{#if courses.length }}
+             {{#each courses }}
+                <div class="course-detail mt-3">
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="m1">
+                                <img id="mainImage" src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+                                {{!-- <img id="mainImage" src="../public/images/courses/c++.svg" alt="Tranding"> --}}
+                            </div>
+                        </div>
+                        <div class="course-desc col-md-8 col-12">
+                                <h3>Course Title : <span id="main-text">{{this.course_name}}</span></h3>
+                                {{!-- <h3>Course Title : <span id="main-text">C++</span></h3> --}}
+                                <h3>Course Duration : 30 days</h3>
+                                <h5 class="mt-3">Course Description :</h5> 
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam quos unde ipsam dignissimos ea incidunt, exercitationem laboriosam! Fugit, autem quasi.</p>
+                        </div>
+                    </div>
+                </div>
+             {{/each }}  
+             {{/if }} 
+            </div>
+
+            <div class="mainbar-item" style="display: none;">
+                <div class="students-section">
+                    <div class="row">
+                        <div class="courses-name col-md-3 col-12">
+                          {{#if courses.length }}
+                          {{#each courses }}
+                            <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;{{this.course_name}}</div>
+                          {{/each }}  
+                          {{/if }} 
+                            {{!-- <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;C++</div>
+                            <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Python</div>
+                            <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Java</div>
+                            <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;C</div>
+                            <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Javascript</div>
+                            <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;PHP</div> --}}
+                        </div>
+                          {{#if courseIds.length }}
+                          {{#each courseIds }}
+                            <div class="students-name col-md-9 col-12 slides" style="display: none;">
+                                <div class="student-section">
+                                    {{#if ../payments.length }}
+                                    {{#each ../payments }}
+                                    {{#if (eq this.course_id ../this)}}
+                                    <div class="student mt-5">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~ {{this.student_name}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            {{this.student_email}}
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{/each }}  
+                                    {{/if }}
+                                </div>
+                            </div>
+                          {{/each }}  
+                          {{/if }}
+                        {{!-- <div class="students-name col-md-9 col-12">
+                                <div class="student-section">
+                                    <div class="student mt-5">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~ Akash Jain</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            akash@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Yashvardhan  Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            yashvardhan@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Virendra Chauhan</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            virendra@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Kabir Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            kabir@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Kabir Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            kabir@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Kabir Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            kabir@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Kabir Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            kabir@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Kabir Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            kabir@gmail.com
+                                        </div>
+                                    </div>
+                                    <div class="student mt-4">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~Kabir Singh</h3>
+                                            </div>
+                                        </div>
+                                        <div class="student-email">
+                                            kabir@gmail.com
+                                        </div>
+                                    </div>
+                                </div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mainbar-item mt-5" style="display: none;">
+                <div class="sell-report">
+                    <table id="myTable" class="display nowrap p-1" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Course Price</th>
+                                <th>Student Name</th>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each payments }}
+                            <tr>
+                                <td>{{this.course_name}}</td>
+                                <td>{{this.course_price}}</td>
+                                <td><span>{{this.student_name}}</span></td>
+                                <td><span>{{this.razorpay_order_id}}</span></td>
+                                <td>{{this.payment_date}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mainbar-item" style="display: none;">
+                <div class="feedbacks-section">
+                    <div class="row">
+                        <div class="courses-name2 col-md-3 col-12">
+                          {{#if courses.length }}
+                          {{#each courses }}
+                            <div class="fw-bold  list-head2"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;{{this.course_name}}</div>
+                          {{/each }}  
+                          {{/if }} 
+                        </div>
+                        {{#if courseIds.length }}
+                          {{#each courseIds }}
+                            <div class="feedbacks-name col-md-9 col-12 slides2" style="display: none;">
+                                <div class="feedback-section">
+                                    {{#if ../feedbacks.length }}
+                                    {{#each ../feedbacks }}
+                                    {{#if (eq this.course_id ../this)}}
+                                    <div class="feedback mt-5">
+                                        <div class="row heading">
+                                            <div class="col-md-1 col-1">
+                                                <figure>
+                                                <img src="../public/images/panda1.avif" alt="">
+                                                </figure>
+                                            </div>
+                                            <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                                                <h3>~ {{this.student_name}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="feedback-content">
+                                            {{this.feedback}}
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{/each }}  
+                                    {{/if }}
+                                </div>
+                            </div>
+                          {{/each }}  
+                          {{/if }}
+                    </div>
+                </div>
+            </div>
+            <div class="mainbar-item"></div>
+        </div>
+    </div>
+
+     
+
+     
+
+    <!-- Data Table Script -->
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script>
+        var $j = jQuery.noConflict();
+        $j(document).ready(function() {
+            $j('#myTable').DataTable();
+        });
+    </script>
+
+
+     {{!-- script for showing students for first course  --}}
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            // Find the first element with the class 'students-name'
+            var firstStudentsName = document.querySelector('.slides');
+
+            // Set the display property to 'block' (show)
+            if (firstStudentsName) {
+                firstStudentsName.style.display = 'block';
+            }
+        });
+    </script>
+    
+     {{!-- script for showing students for perticular course  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const listHeads = document.querySelectorAll('.list-head');
+            const studentsNames = document.querySelectorAll('.students-name');
+
+            listHeads.forEach((listHead, index) => {
+                listHead.addEventListener('click', function () {
+                    // Hide all students names
+                    studentsNames.forEach(studentName => {
+                        studentName.style.display = 'none';
+                    });
+
+                    // Display the corresponding students name
+                    studentsNames[index].style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+
+
+    {{!-- script for showing feedbacks for first course  --}}
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            // Find the first element with the class 'students-name'
+            var firstStudentsName = document.querySelector('.slides2');
+
+            // Set the display property to 'block' (show)
+            if (firstStudentsName) {
+                firstStudentsName.style.display = 'block';
+            }
+        });
+    </script>
+    
+     {{!-- script for showing feedbacks for perticular course  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const listHeads = document.querySelectorAll('.list-head2');
+            const studentsNames = document.querySelectorAll('.feedbacks-name');
+
+            listHeads.forEach((listHead, index) => {
+                listHead.addEventListener('click', function () {
+                    // Hide all students names
+                    studentsNames.forEach(studentName => {
+                        studentName.style.display = 'none';
+                    });
+
+                    // Display the corresponding students name
+                    studentsNames[index].style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+
+     {{!-- script for showing first mainbar-item  --}}
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            // Find the first element with the class 'students-name'
+            var firstMainbarItem = document.querySelector('.mainbar-item');
+
+            // Set the display property to 'block' (show)
+            if (firstMainbarItem) {
+                firstMainbarItem.style.display = 'block';
+            }
+        });
+    </script>
+    
+     {{!-- script for showing mainbar-item for perticular sidebar-item  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const mainbarItems = document.querySelectorAll('.mainbar-item');
+            sidebarItems.forEach((sidebarItem, index) => {
+                sidebarItem.addEventListener('click', function () {
+                    // Hide all students names
+                    mainbarItems.forEach(mainbarItem => {
+                        mainbarItem.style.display = 'none';
+                    });
+
+                    // Display the corresponding students name
+                    mainbarItems[index].style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+
+
+    {{!-- nodejs scripts --}}
+    <script type="text/javascript" src="../jq/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+</body>
+</html>

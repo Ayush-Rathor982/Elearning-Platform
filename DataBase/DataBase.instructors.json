@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "652410f628281fbc05486ab1"
+  },
+  "instructor_name": "John Gerry",
+  "instructor_email": "john@gmail.com",
+  "instructor_pass": "1234",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65243470c417b44df0cd2446"
+  },
+  "instructor_name": "Mathew Josh ",
+  "instructor_email": "mathew@gmail.com",
+  "instructor_pass": "1234",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6531f9ee15aab35867047e47"
+  },
+  "instructor_name": "Ayush ",
+  "instructor_email": "ayush@gmail.com",
+  "instructor_pass": "1234",
+  "__v": 0
+}]

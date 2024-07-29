@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: linear-gradient(-45deg, #56565a 40%, #101018 70%);
+            color: aliceblue;
+        }
+        
+        {{!-- .main-bar{
+            position: fixed;
+            right: 2.2rem;
+            top: 0.4rem;
+            padding: 1rem 4rem;
+        } --}}
+        @media (max-width: 768px) {
+            .main-bar{
+                position: relative;
+                padding: 1rem 5rem;
+            }
+        }
+
+        .sidebar{
+            z-index: 0;
+            background-image: linear-gradient(-45deg, #2c2c2e 10%, #1f1f25 50%);
+            color: aliceblue; 
+        }
+
+        .sidebar .side-box{
+            height: 7.5rem; 
+            /* font-size: 1.5rem; */
+            padding: 0.2rem 1.8rem;
+            /* background-image: linear-gradient(-45deg, #c9a6fa 20%, #413eee 50%); */
+        }
+
+        .sidebar .side-box1 {
+            z-index: 3;
+            min-height: 120%;
+            background-image: linear-gradient(-45deg, #35353a 38%, #44444b 50%);
+            border-radius: 0.7rem;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .side-box1 img {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            top: 0;
+            left: 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            opacity: 0;
+            transition: opacity 0.3s ease; 
+        }
+
+        .side-box1:hover .overlay {
+            background-color: rgb(21, 21, 199);
+            opacity: 0.5;
+        }
+
+        .main-bar{
+            padding: 1.2rem 6rem;
+            height: 100%;
+            background-image: linear-gradient(-45deg, #3b3a3f 20%, #141416 70%);
+            overflow-y: scroll;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        .main-bar::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+
+        .main-bar label{
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.15rem;
+        }
+        .main-bar input, textarea{ 
+            font-style: italic;
+            background-image: linear-gradient(-45deg, #4c4c55 40%, #202030 70%);
+        }
+        .main-bar input:focus, textarea:focus {
+            border-color: #007bff; /* Change border color when focused */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a box shadow when focused */
+        }
+        .main-bar .btn{
+            color: aquamarine;
+            min-width: 15rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 0;
+            background-color: #47475e;
+            border: 2px solid rgb(45, 57, 66);
+        }
+
+        .main-bar figure{
+            padding-left: 8.5rem;
+            max-width: 53%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .main-bar img{
+            display: none;
+            max-width: 53%;
+            height: auto;
+            border: 3px solid #697079;
+        }
+    </style>
+</head>
+<body>
+    
+        <div class="row mt-2">
+            <div class="sidebar col-md-3 col-12 pb-5">
+                {{#if courses.length }}
+                {{#each courses }}
+                    <div class="side-box col-md-12 col-12 mt-5">
+                        <h1 style="display: none;">{{this._id}}</h1>
+                        <figure class="side-box1 ">
+                        {{!-- <figure> --}}
+                            <img src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+                            <div class="overlay"></div>
+                        {{!-- </figure> --}}
+                        </figure>
+                    </div>
+                {{/each }}  
+                {{/if }} 
+            </div>
+
+            <div class="main-bar col-md-9 col-12">
+                <form id="course-form" action="/upload" method="post" >
+                    <div class="mb-3">
+                        <label for="course-name" class="form-label">Course Name</label>
+                        <input type="text" class="form-control textInput" id="course-name" name="course_name" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="course-field" class="form-label">Course Field</label>
+                        <input type="text" class="form-control textInput" id="course-field" name="course_field">
+                    </div>
+                    <div class="mb-3">
+                        <label for="course-desc" class="form-label">Course Description</label>
+                        <textarea rows="4" class="form-control textAreaInput" id="course-desc" name="course_desc"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="course-price" class="form-label">Course Price</label>
+                        <input type="number" class="form-control textInput" id="course_price" name="course_price">
+                    </div>
+                    <div class="mb-3" style="display: none;">
+                        <label for="instructor_id" class="form-label">Instructor Id</label>
+                        <input type="text" value="{{instructor_id}}" class="form-control textInput" id="instructor_id" name="instructor_id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="course-image" class="form-label">Course Image</label>
+                        <input type="file" class="form-control" id="course-image" name="image" accept="image/*">
+                        <figure class="text-center">
+                        <img id="preview-image" src="" >
+                        </figure>
+                    </div>
+                    <div class="text-center">
+                       <button type="submit" class="btn ">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+    
+    {{!-- scripts for showing details of perticular course --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function (){
+            const swiperDivs = document.querySelectorAll(".side-box");
+            swiperDivs.forEach((div) => {
+                div.addEventListener("click", function () {
+                    const course_id = div.querySelector("h1").textContent;
+                    const instructor_id = "{{instructor_id}}";
+                    window.location.href = `/course_detaile?course_id=${encodeURIComponent(course_id)}&instructor_id=${encodeURIComponent(instructor_id)}`;  //&course_name=${encodeURIComponent(course_name)}&course_img=${encodeURIComponent(course_image)}
+                });
+            });
+        });
+    </script>
+
+
+    {{!-- JavaScript to apply styles when typing in the input field --}}
+    <script>
+        const textInput = document.getElementsByClassName('textInput');
+        const textAreaInput = document.getElementsByClassName('textAreaInput');
+        
+        textInput[0].addEventListener('input', function() {
+        this.style.fontSize = '18px'; // Change font size
+        this.style.color = 'rgb(231, 236, 236)';   // Change text color
+        });
+
+        textInput[1].addEventListener('input', function() {
+        this.style.fontSize = '18px'; // Change font size
+        this.style.color = 'rgb(231, 236, 236)';   // Change text color
+        });
+
+        textAreaInput[0].addEventListener('input', function() {
+        this.style.fontSize = '18px';
+        this.style.color = 'rgb(231, 236, 236)';
+        });
+    </script>
+
+    
+    {{!-- JavaScript to handle image selection and preview --}}
+    <script>
+        document.getElementById('course-image').addEventListener('change', function () {
+            const previewImage = document.getElementById('preview-image');
+            const input_img = document.getElementById('course-image'); 
+            const fileInput = this;
+            // console.log(previewImage);
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block'; // Show the preview image
+                    input_img.style.display = 'none';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                previewImage.src = '';
+                previewImage.style.display = 'none'; // Hide the preview image
+            }
+        });
+    </script>    
+
+    {{!-- nodejs scripts --}}
+    <script type="text/javascript" src="../jq/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+</body>
+</html>

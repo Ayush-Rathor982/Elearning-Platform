@@ -1,0 +1,448 @@
+    {{!-- <section id="tranding">
+      <div class="container">
+        <h3 class="text-center section-subheading">- popular Courses -</h3>
+        <h1 class="text-center section-heading">Tranding content</h1>
+      </div>
+      <div class="container">
+        <div class="swiper tranding-slider">
+          <div class="swiper-wrapper">
+
+           {{#if courses.length }}
+           {{#each courses }}
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+              </div>
+            <div class="tranding-slide-content ">
+                <div class=" text-center mb-3 pt-3 ">
+                    <h2 >{{this.course_name}} </h2>
+                    <p class="">{{this.course_desc}} </p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+            </div>
+            </div>
+            <!-- Slide-end -->
+
+            {{/each }}  
+            {{/if }}
+            
+          </div>
+
+          <div class="tranding-slider-control">
+            <div class="swiper-button-prev slider-arrow">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </div>
+            <div class="swiper-button-next slider-arrow">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+        </div>
+      </div>
+    </section> --}}
+
+
+
+
+
+
+
+
+
+
+         <div id="begin-text" class="container begin-text ">
+            <div class="top-content">
+                 <h1>A Broad Collection Of Courses Are Here</h1>
+                 <span>Learn everyday and become expert. Enhance your skill and make your future better.</span>
+            </div>     
+            <div class="tab_box mt-5">
+                <button class="tab_btn active">Programming</button>
+                <button class="tab_btn ">Web Development</button>
+                <button class="tab_btn ">App Devlopment</button>
+                <button class="tab_btn ">AI/ML</button>
+                <button class="tab_btn ">Data Science</button>
+            </div>
+            <div class="content_box">
+
+                <div class="content active">
+
+                              <section id="tranding">
+                                <div class="container">
+                                  <h3 class="section-heading">Expand your carrier by learning Programming</h3>
+                                  <p class="section-subheading">With programming skills, individuals can harness the power of technology to innovate, solve problems, and create valuable solutions. Whether entering the tech industry directly or applying programming in another field, such as finance, healthcare, or art, proficiency in coding opens doors to a myriad of opportunities. </p>
+                                </div>
+                                <div class="container ">
+                                  <div class="swiper tranding-slider">
+                                    <div class="swiper-wrapper">
+
+                                    {{#if courses.length }}
+                                    {{#each courses }}
+
+                                    {{#if (eq this.course_field 'programming')}}
+
+                                      <!-- Slide-start -->
+                                      <div class="swiper-slide tranding-slide bg-light">
+                                        <div class="tranding-slide-img bg-light">
+                                          <img src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">  
+                                        </div>
+                                      <div class="tranding-slide-content bg-light pb-3">
+                                          <div class=" text-center mb-3 pt-3 ">
+                                              <h1 style="display: none;">{{this._id}}</h1>
+                                              <h2 >{{this.course_name}} </h2>
+                                              <p class="">{{this.course_desc}} </p>
+                                              <h4 class="food-rating ps-3">
+                                              <span>4.5</span>
+                                              <div class="rating">
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                              </div>
+                                            </h4>
+                                            <h3 class="food-price mt-4">Price: $20</h3>
+                                              <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                                          </div>
+                                      </div>
+                                      </div>
+                                      <!-- Slide-end -->
+
+                                      {{/if}}
+
+                                      {{/each }}  
+                                      {{/if }}
+                                      
+                                    </div>
+
+                                    <div class="tranding-slider-control mt-3">
+                                      <div class="swiper-button-prev slider-arrow">
+                                        <ion-icon name="arrow-back-outline"></ion-icon>
+                                      </div>
+                                      <div class="swiper-button-next slider-arrow">
+                                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                                      </div>
+                                      <div class="swiper-pagination"></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </section>
+
+                </div>
+
+
+                <div class="content">
+
+                              <section id="tranding">
+                                <div class="container">
+                                  <h3 class="section-heading">Give your carrier a boost by beacoming a web developer</h3>
+                                  <p class="section-subheading">Web development is the art of crafting digital experiences. It involves designing, coding, and maintaining websites and web applications that cater to diverse user needs. Front-end development focuses on creating visually appealing and user-friendly interfaces using languages like HTML, CSS, and JavaScript. Back-end development involves building the behind-the-scenes functionality, often using languages like Python, Ruby, or PHP, and managing databases.</p>
+                                </div>
+                                <div class="container">
+                                  <div class="swiper tranding-slider">
+                                    <div class="swiper-wrapper">
+
+                                    {{#if courses.length }}
+                                    {{#each courses }}
+
+                                    {{#if (eq this.course_field 'web_development')}}
+
+                                      <!-- Slide-start -->
+                                      <div class="swiper-slide tranding-slide bg-light">
+                                        <div class="tranding-slide-img bg-light">
+                                          {{!-- {{const base64SVG = this.course_img.data.toString('base64'); }} --}}
+                                          <img src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+                                          {{!-- <img src="data:image/svg+xml;charset=UTF-8;base64,{{this.course_img.data}}" alt="Tranding"> --}}
+                                        </div>
+                                      <div class="tranding-slide-content ">
+                                          <div class=" text-center mb-1 pt-3 bg-light">
+                                              <h1 style="display: none;">{{this._id}}</h1>
+                                              <h2 class="coursename" >{{this.course_name}} </h2>
+                                              <p class="">{{this.course_desc}} </p>
+                                              <h4 class="food-rating ps-3">
+                                              <span>4.5</span>
+                                              <div class="rating">
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                              </div>
+                                            </h4>
+                                            <h3 class="food-price mt-4">Price: ${{this.course_price}}</h3>
+                                              <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                                          </div>
+                                      </div>
+                                      </div>
+                                      <!-- Slide-end -->
+
+                                      {{/if}}
+
+                                      {{/each }}  
+                                      {{/if }}
+                                      
+                                    </div>
+
+                                    <div class="tranding-slider-control mt-1">
+                                      <div class="swiper-button-prev slider-arrow">
+                                        <ion-icon name="arrow-back-outline"></ion-icon>
+                                      </div>
+                                      <div class="swiper-button-next slider-arrow">
+                                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                                      </div>
+                                      <div class="swiper-pagination"></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </section>
+
+                </div>
+
+
+
+
+            </div>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {{!-- <section id="tranding">
+      <div class="container">
+        <h3 class="text-center section-subheading">- popular Courses -</h3>
+        <h1 class="text-center section-heading">Tranding content</h1>
+      </div>
+      <div class="container">
+        <div class="swiper tranding-slider">
+          <div class="swiper-wrapper">
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/c++.svg" alt="Tranding">
+              </div>
+            <div class="tranding-slide-content ">
+                <div class=" text-center mb-3 pt-3 ">
+                    <h2 >C++</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+            </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/c_sh.svg" alt="Tranding">
+              </div>
+              <div class="tranding-slide-content">
+                 <div class=" text-center mb-3 pt-3">
+                    <h2 >C#</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/c.svg" alt="Tranding">
+              </div>
+              <div class="tranding-slide-content">
+                 <div class=" text-center mb-3 pt-3">
+                    <h2 >C</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/py.svg" alt="Tranding">
+              </div>
+              <div class="tranding-slide-content">
+                 <div class=" text-center mb-3 pt-3">
+                    <h2 >Python</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/java.svg" alt="Tranding">
+              </div>
+              <div class="tranding-slide-content">
+                 <div class=" text-center mb-3 pt-3">
+                    <h2 >Java</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/js.svg" alt="Tranding">
+              </div>
+              <div class="tranding-slide-content">
+                 <div class=" text-center mb-3 pt-3">
+                    <h2 >Java Script</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide bg-light">
+              <div class="tranding-slide-img">
+                <img src="../public/images/courses/php.svg" alt="Tranding">
+              </div>
+              <div class="tranding-slide-content">
+                 <div class=" text-center mb-3 pt-3">
+                    <h2 >PHP</h2>
+                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="food-rating ps-3">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h4>
+                  <h3 class="food-price">Price: $20</h3>
+                    <a href="#" class="btn btn-style btn-lg">Purchase it</a>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            
+          </div>
+
+          <div class="tranding-slider-control">
+            <div class="swiper-button-prev slider-arrow">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </div>
+            <div class="swiper-button-next slider-arrow">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+        </div>
+      </div>
+    </section> --}}
+
+
+
+
+
+
+
+

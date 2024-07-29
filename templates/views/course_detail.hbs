@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+        body{
+            /* background-color: rgb(41, 20, 20); */
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(-45deg, #3b3a3f 20%, #141416 70%);
+            color: aliceblue;
+        }
+        .sidebar{
+            z-index: 0;
+            background-image: linear-gradient(-45deg, #2c2c2e 10%, #1f1f25 50%);
+            color: aliceblue; 
+        }
+
+        .sidebar .side-box{
+            height: 7.5rem; 
+            /* font-size: 1.5rem; */
+            padding: 0.2rem 1.8rem;
+            /* background-image: linear-gradient(-45deg, #c9a6fa 20%, #413eee 50%); */
+        }
+
+        .sidebar .side-box1 {
+            min-height: 120%;
+            background-image: linear-gradient(-45deg, #35353a 38%, #44444b 50%);
+            border-radius: 0.7rem;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .side-box1 img {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            top: 0;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar{
+                display: none;
+            }
+        }
+
+        .main-bar{
+            padding: 1rem 3rem;
+            height: 100%;
+            background-image: linear-gradient(-45deg, #3b3a3f 20%, #141416 70%);
+            overflow-y: scroll;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        .main-bar::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+
+        .main-bar .course-detail{
+            z-index: 0;
+            opacity: 0.85;
+            border-radius: 5rem;
+            background-image: linear-gradient(-45deg, #1e1c27 20%, #08085e 50%);
+        }
+
+        .main-bar .course-detail .m1{
+            padding: 3rem;
+            max-width: 85%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .main-bar .course-detail img{
+            z-index: 3;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #697079;
+            border-radius: 0.7rem;
+        }
+
+        .main-bar .course-detail .course-desc{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-bar .course-detail .course-desc h3{
+            padding: 0.25rem 0px;
+        }
+
+        
+        .icon-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 2;
+            width: 5rem;
+            height: 5rem;
+            background-image: linear-gradient(-45deg, #4d4d50 30%, #50182f 60%);
+            box-shadow: 1px 1px 10px 8px rgba(152, 152, 153, 0.5);
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .icon-container i {
+            color: #fff; 
+            font-size: 33px; 
+        }
+        .icon-container button {
+            background: none;
+        }
+
+        #exampleModal .modal-content{
+            width: 40rem;
+            background-image: linear-gradient(-45deg, #62626b 30%, #1d1d30 60%);
+        }
+        #content-form label{
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.15rem;
+        }
+        #content-form input, textarea{ 
+            font-style: italic;
+            background-image: linear-gradient(-45deg, #4c4c55 40%, #202030 70%);
+        }
+        #content-form input:focus, textarea:focus {
+            border-color: #007bff; 
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+        }
+        #content-form .btn{
+            color: aquamarine;
+            min-width: 15rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 0;
+            background-color: #47475e;
+            border: 2px solid rgb(45, 57, 66);
+        }
+        #content-form figure{
+            padding-left: 8rem;
+            max-width: 53%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        #content-form img{
+            display: none;
+            max-width: 53%;
+            height: auto;
+            border: 3px solid #697079;
+        }
+
+
+        .main-bar .course-contents{
+            margin-top: 7rem;
+        }
+
+        .main-bar .course-contents .content-feild .course-topic{
+            min-height: 40rem;
+            padding: 1.8rem;
+            font-size: 0.9rem;
+            background-image: linear-gradient(-45deg, #2b2836 20%, #29294d 50%);
+        }
+        .main-bar .course-contents .content-feild .course-topic div{
+            padding: 0.7rem 0px;
+        }
+        .main-bar .course-contents .content-feild .course-topic .list-head:hover{
+            color: #355475;
+        }
+
+        .main-bar .course-contents .content-feild .course-content{
+            min-height: 40rem;
+            padding: 1.8rem 3rem;
+            background-image: linear-gradient(-45deg, #211f27 20%, #3a3a4b 50%);
+        }
+        .main-bar .course-contents .content-feild .course-content div{
+            padding: 0.7rem 0px;
+        }
+        .main-bar .course-contents .content-feild .course-content div{
+            color: #73b1f3;
+        }
+        .main-bar .course-contents .content-feild .course-content div a{
+            color: aqua;
+            text-decoration: none;
+            padding: 0.7rem 0px;
+        }
+        .main-bar .course-contents .content-feild .course-content div a:hover{
+            color: rgb(62, 6, 247);
+            text-decoration: underline;
+        }
+        .main-bar .course-contents .content-feild h2{
+            font-family: initial;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="row">
+        <div class="sidebar col-md-3 col-12 pb-5">
+            {{#if courses.length }}
+            {{#each courses }}
+                 <div class="side-box col-md-12 col-12 mt-5">
+                    <figure class="side-box1 ">
+                    {{!-- <figure> --}}
+                        <img class="clickable-image" data-course-id="{{this._id}}" src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+                        <div class="overlay"></div>
+                    {{!-- </figure> --}}
+                    </figure>
+                    {{!-- <h2 class="clickable-text" style="display: none;">{{this.course_name}}</h2> --}}
+                    <h2 class="clickable-text" style="display: none;">{{this._id}}</h2>
+                 </div>
+            {{/each }}  
+            {{/if }}      
+        </div>
+        <div class="main-bar col-md-9 col-12">
+            <div class="course-detail">
+                <div class="row">
+                    <div class="col-md-5 col-12">
+                        <div class="m1">
+                            <img id="mainImage" src="data: {{course.course_img.contentType}};base64,{{base64Encode course.course_img.data}}" alt="Tranding">
+                        </div>
+                    </div>
+                    <div class="course-desc col-md-7 col-12">
+                            <h3>Course Title : <span id="main-text">{{course.course_name}}</span></h3>
+                            <h3>Course Duration : 30 days</h3>
+                            <h5 class="mt-3">Course Description :</h5> 
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam quos unde ipsam dignissimos ea incidunt, exercitationem laboriosam! Fugit, autem quasi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="course-contents ">
+                <div class="row content-feild">
+                    <div class="col-md-5 col-12 course-topic">
+                        <h2>Topics</h2>
+                        {{#if course_topics.length }}
+                        {{#each course_topics }}
+                           <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;{{this}}</div>
+                        {{/each }} 
+                        {{/if }}
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Introduction to Programming with Python</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Programming Basics</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Advance Python Concept</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Additional Python Resources</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Essential Modules - Requests</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Project#1 Web Scraper</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Project#2</div>
+                        <div class="fw-bold  list-head"><i class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;Project#3 Getting Stated with PyMongo</div>
+                    </div>
+                    {{#if course_topics.length }}
+                    {{#each course_topics }}
+                    <div class="col-md-7 col-12 course-content" style="display:none">
+                        <h2>Content</h2>
+                        {{#if ../course_content.length }}
+                        {{#each ../course_content }}
+                        {{#if (eq this.topic_name ../this)}}
+                          {{!-- <div>{{this._id}}</div> --}}
+                          <div><a href="/video/{{this._id}}"><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;{{this.content_name}}</a></div>
+                          {{!-- <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;{{this.content_name}}</div>
+                          <div class="content-id" style="display: none;">{{this._id}}</div> --}}
+                        {{/if}}
+                        {{/each }} 
+                        {{/if }}
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;Introduction to Python</div>
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;Mac/Linux Installation</div>
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;Windows set-up</div>
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;Interpreted Vs compiled programming languages</div>
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;Creating and running our first Python script</div>
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;Choosing an integrated development environment (IDE)</div>
+                        <div><span><i class="fas fa-tv"></i></span> &nbsp;&nbsp;How to share your code with us and get help with errors</div>
+                        <div><span><i class="fas fa-pencil-alt"></i></span>&nbsp;&nbsp;Section 1 Quiz</div>
+                    </div>
+                    {{/each }} 
+                    {{/if }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- triggered modal -->
+    <div class="icon-container">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fas fa-plus"></i>
+            </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Fill The Details</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="content-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="course-name" class="form-label">Course Name</label>
+                    <input type="text" class="form-control textInput" id="course-name" name="course-name" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="course-field" class="form-label">Course Field</label>
+                    <input type="text" class="form-control textInput" id="course-field" name="course-field">
+                </div>
+                <div class="mb-3">
+                    <label for="course-desc" class="form-label">Course Description</label>
+                    <textarea rows="4" class="form-control textAreaInput" id="course-desc" name="course-desc"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="course-image" class="form-label">Course Image</label>
+                    <input type="file" class="form-control" id="course-image" name="course-image" accept="image/*">
+                    <figure class="text-center">
+                    <img id="preview-image" src="" >
+                    </figure>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn ">Submit</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    
+
+
+     {{!-- script for making content visible --}}
+    <script>
+        // Get all elements with the class 'list-head'
+        const listHeads = document.querySelectorAll('.list-head');
+
+        // Get all elements with the class 'list-items'
+        const listItems = document.querySelectorAll('.course-content');
+        listItems[0].style.display = 'block';
+
+        // Loop through each 'list-head' element and add a click event listener
+        listHeads.forEach((listHead, index) => {
+        listHead.addEventListener('click', function() {
+            // Hide all list-items
+            listItems.forEach(item => {
+            item.style.display = 'none';
+            });
+
+            // Show the corresponding list-items based on index
+            if (listItems[index]) {
+                listItems[index].style.display = 'block';
+            }
+        });
+        });
+    </script>
+
+
+     {{!-- showing course details for perticular course --}}
+    <script>
+            // Add a click event listener to all elements with the class 'clickable-image'
+            document.querySelectorAll('.clickable-image').forEach(function(image) {
+                image.addEventListener('click', function() {
+                    // Retrieve the course ID from the 'data-course-id' attribute
+                    const course_id = this.getAttribute('data-course-id');
+
+                    // Send the course ID to another part of your application
+                    // You can use this courseId to perform further actions
+                    {{!-- console.log('Course ID:', courseId); --}}
+                    const instructor_id = "{{instructor_id}}";
+                    window.location.href = `/course_detaile?course_id=${encodeURIComponent(course_id)}&instructor_id=${encodeURIComponent(instructor_id)}`; 
+                });
+            });
+    </script>
+    {{!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mainImage = document.getElementById("mainImage");
+            const mainHeading = document.getElementById("main-text");
+            const clickableImages = document.querySelectorAll(".clickable-image");
+            const clickableHeadings = document.querySelectorAll(".clickable-text");
+
+            clickableImages.forEach(function (image,index) {
+                image.addEventListener("click", function () {
+                    const newImageSrc = image.getAttribute("src");
+                    const newHeadingText = clickableHeadings[index].textContent;
+                    mainImage.setAttribute("src", newImageSrc);
+                    mainHeading.textContent = newHeadingText;
+                });
+            });
+        });
+    </script> --}}
+
+
+    {{!-- JavaScript to apply styles when typing in the input field --}}
+    <script>
+        const textInput = document.getElementsByClassName('textInput');
+        const textAreaInput = document.getElementsByClassName('textAreaInput');
+        
+        textInput[0].addEventListener('input', function() {
+        this.style.fontSize = '18px'; // Change font size
+        this.style.color = 'rgb(231, 236, 236)';   // Change text color
+        });
+
+        textInput[1].addEventListener('input', function() {
+        this.style.fontSize = '18px'; // Change font size
+        this.style.color = 'rgb(231, 236, 236)';   // Change text color
+        });
+
+        textAreaInput[0].addEventListener('input', function() {
+        this.style.fontSize = '18px';
+        this.style.color = 'rgb(231, 236, 236)';
+        });
+    </script>
+
+    
+    {{!-- JavaScript to handle image selection and preview --}}
+    <script>
+        document.getElementById('course-image').addEventListener('change', function () {
+            const previewImage = document.getElementById('preview-image');
+            const input_img = document.getElementById('course-image'); 
+            const fileInput = this;
+            // console.log(previewImage);
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block'; // Show the preview image
+                    input_img.style.display = 'none';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                previewImage.src = '';
+                previewImage.style.display = 'none'; // Hide the preview image
+            }
+        });
+    </script>
+
+    {{!-- nodejs scripts --}}
+    <script type="text/javascript" src="../jq/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+        body{
+            /* background-color: rgb(41, 20, 20); */
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(-45deg, #3b3a3f 20%, #141416 70%);
+            color: aliceblue;
+        }
+        .sidebar{
+            z-index: 0;
+            background-image: linear-gradient(-45deg, #2c2c2e 10%, #1f1f25 50%);
+            color: aliceblue; 
+        }
+
+        .sidebar .side-box{
+            height: 7.5rem; 
+            /* font-size: 1.5rem; */
+            padding: 0.2rem 1.8rem;
+            /* background-image: linear-gradient(-45deg, #c9a6fa 20%, #413eee 50%); */
+        }
+
+        .sidebar .side-box1 {
+            z-index: 3;
+            min-height: 120%;
+            background-image: linear-gradient(-45deg, #35353a 38%, #44444b 50%);
+            border-radius: 0.7rem;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .side-box1 img {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            top: 0;
+            left: 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            opacity: 0;
+            transition: opacity 0.3s ease; 
+        }
+
+        .side-box1:hover .overlay {
+            background-color: rgb(21, 21, 199);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar{
+                display: none;
+            }
+        }
+
+        .main-bar{
+            padding: 1rem 3rem;
+            height: 100%;
+            background-image: linear-gradient(-45deg, #3b3a3f 20%, #141416 70%);
+            overflow-y: scroll;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        .main-bar::-webkit-scrollbar {
+            width: 0 !important;
+            display: none !important;
+        }
+
+        .main-bar .query-section{
+            padding: 0.7rem;
+        }
+        
+        .main-bar .query{
+           border: 2px solid rgb(165, 167, 168);
+           box-shadow: 4px 4px 6px rgba(238, 232, 232, 0.2),-4px -4px 6px rgba(238, 232, 232, 0.2);
+           background-image: linear-gradient(-40deg, #535858 30%, #153b3b 80%);
+        }
+        .main-bar .query .heading{
+            padding: 0.08rem 0.05rem;
+            {{!-- border-radius: 0.8rem;
+            border: 2px solid rgb(54, 10, 59); --}}
+        }
+
+        .main-bar .query .query-sec{
+            border-top: 0.5px solid floralwhite;
+            border-bottom: 0.5px solid floralwhite;
+            padding: 1rem;
+           background-image: linear-gradient(-40deg, #252531 30%, #3b3b50 80%); 
+        }
+
+        .main-bar .query .query-sec h4{
+            color: #e8f0f0;
+            font-family: initial;
+        }
+
+        .main-bar .query-replay .form-control {
+            border: 0px;
+            border-radius: 0px;
+            background-image: linear-gradient(-40deg, #41383d 30%, #2f2f41 80%); 
+        }
+
+        .main-bar .query-replay button{
+            border: none;
+            background-color: #1e8383; 
+        }
+
+        .main-bar .query figure{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .main-bar .query .heading h2{
+            font-style: italic;
+            font-family: initial ;
+        }
+
+        .main-bar .query img{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #697079;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    {{!-- <h1>Student's Queries</h1> --}}
+    <div class="row">
+        <div class="sidebar col-md-3 col-12 pb-5">
+            {{#if courses.length }}
+            {{#each courses }}
+                 <div class="side-box col-md-12 col-12 mt-5">
+                    <h1 style="display: none;">{{this._id}}</h1>
+                    <figure class="side-box1 clickable-image">
+                    {{!-- <figure> --}}
+                        <img src="data: {{this.course_img.contentType}};base64,{{base64Encode this.course_img.data}}" alt="Tranding">
+                        <div class="overlay"></div>
+                    {{!-- </figure> --}}
+                    </figure>
+                    <h2 class="clickable-text" style="display: none;">{{this._id}}</h2>
+                 </div>
+            {{/each }}  
+            {{/if }}      
+        </div>
+        <div class="main-bar col-md-9 col-12">
+            {{#if courseIds.length }}
+            {{#each courseIds }}
+            <div class="query-section" style="display: none;">
+                {{#if ../queries.length }}
+                {{#each ../queries }}
+                {{#if (eq this.course_id ../this)}}
+                <div class="query mt-5">
+                    <div class="row heading">
+                        <div class="col-md-1 col-1">
+                            <figure>
+                            <img src="../public/images/panda1.avif" alt="">
+                            </figure>
+                        </div>
+                        <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                            <h2>~ {{this.student_name}}</h2>
+                        </div>
+                    </div>
+                    <div class="query-sec">
+                    <div class="query-asked">
+                        <h4>query asked</h4>
+                        {{this.query_asked}}
+                    </div>
+                    {{#if query_reply }}
+                    <div class="query-reply mt-4">
+                    <h4>query replied</h4>
+                        {{this.query_reply}}
+                    </div>
+                    {{/if}}
+                    </div>
+                    <div class="form-floating query-replay">
+                        <h3 style="display: none;">{{this._id}}</h3>
+                        <textarea class="form-control textInput" placeholder="Leave a comment here" id="floatingTextarea" required></textarea>
+                        <button type="submit" class="submitQueryButton" id="submitQuery" style="position: absolute; right: 10px; bottom: 8px;">
+                            <i class="fa-solid fa-paper-plane" style="color: #1e3966;"></i>
+                        </button>
+                        <label for="floatingTextarea">Comments</label>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+                {{/if}}
+                <div class="query mt-5">
+                    <div class="row heading">
+                        <div class="col-md-1 col-1">
+                            <figure>
+                            <img src="../public/images/panda1.avif" alt="">
+                            </figure>
+                        </div>
+                        <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                            <h2>~Yashvardhan  Singh</h2>
+                        </div>
+                    </div>
+                    <div class="query-sec">
+                    <div class="query-asked">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eum cum animi expedita, explicabo quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tempore ipsam, quo a et dolorum adipisci, commodi fugiat nisi asperiores enim ad vitae, error cupiditate aperiam placeat voluptatibus animi! Aut?
+                    </div>
+                    </div>
+                    <div class="form-floating query-replay">
+                        <textarea class="form-control textInput" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
+                    </div>
+                </div>
+                <div class="query mt-5">
+                    <div class="row heading">
+                        <div class="col-md-1 col-1">
+                            <figure>
+                            <img src="../public/images/panda1.avif" alt="">
+                            </figure>
+                        </div>
+                        <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                            <h2>~Virendra Chauhan</h2>
+                        </div>
+                    </div>
+                    <div class="query-sec">
+                    <div class="query-asked">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eum cum animi expedita, explicabo quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tempore ipsam, quo a et dolorum adipisci, commodi fugiat nisi asperiores enim ad vitae, error cupiditate aperiam placeat voluptatibus animi! Aut?
+                    </div>
+                    </div>
+                    <div class="form-floating query-replay">
+                        <textarea class="form-control textInput" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
+                    </div>
+                </div>
+                <div class="query mt-5">
+                    <div class="row heading">
+                        <div class="col-md-1 col-1">
+                            <figure>
+                            <img src="../public/images/panda1.avif" alt="">
+                            </figure>
+                        </div>
+                        <div class="col-md-11 col-11 d-flex flex-column justify-content-center">
+                            <h2>~Kabir Singh</h2>
+                        </div>
+                    </div>
+                    <div class="query-sec">
+                    <div class="query-asked">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eum cum animi expedita, explicabo quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tempore ipsam, quo a et dolorum adipisci, commodi fugiat nisi asperiores enim ad vitae, error cupiditate aperiam placeat voluptatibus animi! Aut?
+                    </div>
+                    </div>
+                    <div class="form-floating query-replay">
+                        <textarea class="form-control textInput" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+    </div>
+
+
+
+
+
+
+     {{!-- script for showing first query-section  --}}
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            var firstQuerySection = document.querySelector('.query-section');
+
+            // Set the display property to 'block' (show)
+            if (firstQuerySection) {
+                firstQuerySection.style.display = 'block';
+            }
+        });
+    </script>
+
+     {{!-- script for showi queries for perticular course  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all sidebar images
+            const sidebarImages = document.querySelectorAll('.clickable-image');
+            const querySections = document.querySelectorAll('.query-section');
+            // Add click event listener to each image
+            sidebarImages.forEach((image, index) => {
+                image.addEventListener('click', function () {
+            console.log("llll");
+
+                    querySections.forEach(container => {
+                        container.style.display = 'none';
+                    });
+
+                    // Toggle the display property of the corresponding container using the index
+                    querySections[index].style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    
+    <script>
+        // Get all elements with the class 'submitQueryButton'
+        const submitButtons = document.querySelectorAll('.submitQueryButton');
+
+        submitButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Find the closest parent element with class 'query' from the clicked button
+                const queryContainer = this.closest('.query');
+                const textInput = queryContainer.querySelector('.textInput');
+                const commentText = textInput.value; // Get the value of the textarea
+                const queryId = queryContainer.querySelector('h3').textContent; // Get the value of h2
+                console.log(queryId)
+                
+                const instructor_id = "{{instructor_id}}";
+                // Construct the new URL with query parameters
+                const redirectUrl = `/query_update?instructor_id=${instructor_id}&comment=${commentText}&query_id=${queryId}`;
+                
+                // Redirect to the new URL
+                window.location.href = redirectUrl;
+            });
+        });
+    </script>
+
+    <script>
+        const textInputs = document.getElementsByClassName('textInput');
+
+        Array.from(textInputs).forEach((input) => {
+            input.addEventListener('input', function() {
+            this.style.fontSize = '15px'; // Change font size
+            this.style.color = 'rgb(231, 236, 236)';   // Change text color
+            });
+        })
+    </script>
+
+
+
+    {{!-- nodejs scripts --}}
+    <script type="text/javascript" src="../jq/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+
+</body>
+</html>

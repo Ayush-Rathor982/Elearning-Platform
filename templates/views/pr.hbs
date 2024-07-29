@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/upload_content" method="POST" enctype="multipart/form-data">
+    <input type="text" name="course_id" placeholder="course id">
+    <input type="text" name="course_name" placeholder="course name">
+    <input type="text" name="topic_name" placeholder="topic name" >
+    <input type="text" name="content_name" placeholder="content name">
+  <input type="file" name="video" accept="video/*">
+  <input type="submit" value="Upload Video">
+</form>
+
+<br><br><br><br>
+  <video width="320" height="240" controls>
+    <source src="/video/654a7f7ed923f641b0a91fcd" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+
+</body>
+</html>

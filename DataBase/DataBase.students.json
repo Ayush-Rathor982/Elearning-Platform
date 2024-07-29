@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "6501319860c709a9fb7ac3bb"
+  },
+  "student_name": "Akash",
+  "student_email": "akash@gmail.com",
+  "student_pass": "123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650132231a6c2f6ec0a611ea"
+  },
+  "student_name": "Ajay",
+  "student_email": "ajay@gmail.com",
+  "student_pass": "123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6501327f99119a0ad25ebdc2"
+  },
+  "student_name": "suraj",
+  "student_email": "suraj@gmail.com",
+  "student_pass": "123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650132c85aaffcfb985b37b7"
+  },
+  "student_name": "Santosh",
+  "student_email": "santosh@gmail.com",
+  "student_pass": "123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6503dc70347810da25ad9097"
+  },
+  "student_name": "Ayush",
+  "student_email": "ayush@gmail.com",
+  "student_pass": "123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6531fbfa49b96c5d2c9639ad"
+  },
+  "student_name": "parth",
+  "student_email": "parth@gmail.com",
+  "student_pass": "1234",
+  "__v": 0
+}]
